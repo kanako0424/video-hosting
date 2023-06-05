@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>動画アップロードサイト</title>
+  <style>
+    .video-list {
+      margin-bottom: 20px;
+    }
+    .video-list-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .video-list-item video {
+      margin-right: 10px;
+    }
+    .embed-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9のアスペクト比 */
+      height: 0;
+      overflow: hidden;
+    }
+    .embed-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>動画アップロードサイト</h1>
+  
+  <div>
+    <input type="file" id="video-input">
+    <button onclick="uploadVideo()">アップロード</button>
+  </div>
+  
+  <div class="video-list">
+    <h2>アップロードされた動画</h2>
+    <ul id="video-list"></ul>
+  </div>
+  
+  <script>
+    function uploadVideo() {
+      var input = document.getElementById('video-input');
+      var file = input.files[0];
+      
+      var video = document.createElement('video');
+      video.src = URL.createObjectURL(file);
+      video.controls = true;
+      video.style.maxWidth = '200px';
+      
+      var listItem = document.createElement('li');
+      listItem.classList.add('video-list-item');
+      listItem.appendChild(video);
+      
+      var videoList = document.getElementById('video-list');
+      videoList.appendChild(listItem);
+      
+      embedVideo(video.src); // 別のサイトに動画を埋め込む
+    }
+    
+    function embedVideo(videoUrl) { // enbedVideo
+      var embedContainer = document.createElement('div');
+      embedContainer.classList.add('embed-container');
+      
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.example.com/embed?video=' + encodeURIComponent(videoUrl);
+      iframe.allowFullscreen = true;
+      embedContainer.appendChild(iframe);
+      
+      document.body.appendChild(embedContainer);
+    }
+  </script>
+</body>
+</html>
