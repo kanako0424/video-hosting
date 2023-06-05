@@ -39,7 +39,12 @@
   
   <div class="video-list">
     <h2>アップロードされた動画</h2>
-    <ul id="video-list"></ul>
+    <ul id="video-list">
+      <li class="video-list-item">
+        <div class="vsc-controller"></div>
+        <video src="blob:https://647dd505dd2997009d4c6306--timely-halva-8a11f0.netlify.app/9f0e6e3c-dcbd-4c44-93b1-3675034dbfd9" controls="" style="max-width: 200px;"></video>
+      </li>
+    </ul>
   </div>
   
   <script>
@@ -67,35 +72,12 @@
       embedContainer.classList.add('embed-container');
       
       var iframe = document.createElement('iframe');
-      iframe.src = 'https://647dd505dd2997009d4c6306--timely-halva-8a11f0.netlify.app/embed?video=' + encodeURIComponent(videoUrl);
+      iframe.src = 'https://647dd505dd2997009d4c6306--timely-halva-8a11f0.netlify.app/videos/?video=' + encodeURIComponent(videoUrl);
       iframe.allowFullscreen = true;
       embedContainer.appendChild(iframe);
       
       document.body.appendChild(embedContainer);
     }
-  </script>
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyAn991_1uqde6ZjXO9wT7zG0Z2zF2SPZFA",
-      authDomain: "video-hosting-2e946.firebaseapp.com",
-      projectId: "video-hosting-2e946",
-      storageBucket: "video-hosting-2e946.appspot.com",
-      messagingSenderId: "183560215296",
-      appId: "1:183560215296:web:313d7283dd4ca4d6deb1e5",
-      measurementId: "G-RVN7HT541G"
-    };
-  
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
   </script>
 </body>
 </html>
