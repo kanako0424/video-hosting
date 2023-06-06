@@ -43,50 +43,10 @@
       <li class="video-list-item">
         <div class="vsc-controller"></div>
         <video src="videos/2_edited.mp4" controls="" style="max-width: 200px;"></video>
+        <video src="videos/3_edited.mp4" controls="" style="max-width: 200px;"></video>
+
       </li>
     </ul>
   </div>
-  <div class="video-list-embed">
-    <h2>埋め込みの動画達</h2>
-    <ul id="video-list-embed">
-      <li class="video-list-item">
-        <div class="vsc-controller"></div>
-        <iframe src="https://647dd505dd2997009d4c6306--timely-halva-8a11f0.netlify.app/videos/2_edited.mp4" controls="" style="max-width: 200px;"></iframe>
-      </li>
-    </ul>
-  </div>
-  
-  <script>
-    function uploadVideo() {
-      var input = document.getElementById('video-input');
-      var file = input.files[0];
-      
-      var video = document.createElement('video');
-      video.src = URL.createObjectURL(file);
-      video.controls = true;
-      video.style.maxWidth = '200px';
-      
-      var listItem = document.createElement('li');
-      listItem.classList.add('video-list-item');
-      listItem.appendChild(video);
-      
-      var videoList = document.getElementById('video-list');
-      videoList.appendChild(listItem);
-      
-      embedVideo(video.src); // 別のサイトに動画を埋め込む
-    }
-    
-    function embedVideo(videoUrl) { // enbedVideo
-      var embedContainer = document.createElement('div');
-      embedContainer.classList.add('embed-container');
-      
-      var iframe = document.createElement('iframe');
-      iframe.src = 'https://647dd505dd2997009d4c6306--timely-halva-8a11f0.netlify.app/videos/?video=' + encodeURIComponent(videoUrl);
-      iframe.allowFullscreen = true;
-      embedContainer.appendChild(iframe);
-      
-      document.body.appendChild(embedContainer);
-    }
-  </script>
 </body>
 </html>
